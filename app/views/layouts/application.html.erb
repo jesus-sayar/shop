@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Shop</title>
+  <%= stylesheet_link_tag    "application", :media => "all" %>
+  <%= javascript_include_tag "application" %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+
+<header>
+	<div class="row">
+		<div class="six columns">
+			<h1><%= link_to "Example Shop", root_path %></h1>
+		</div>
+		<div class="six columns navbar">
+				<ul>
+					<% if user_signed_in? %>
+						<li><%= "Hola, #{current_user.email}" %> </li>
+					<% end %>
+						<li><%= link_to "Tienda", root_path %></li>
+						<li><%= link_to_cart %></li>
+					<% if user_signed_in? %>
+						<li><%= link_to "Administración", admin_root_path if current_user.admin? %> </li>
+						<li><%= link_to "Logout", logout_path, :method => :delete %></li>
+					<% else %>
+						<li><%= link_to "Login", login_path %></li>
+						<li><%= link_to "Registrarse", register_path %></li>
+					<% end %>
+				</ul>
+			</div>
+	</div>
+</header>
+
+<div class="row">
+	<%= messages_about_actions %>
+	<%= yield %>
+</div>
+
+<footer>
+	
+</footer>
+</body>
+</html>

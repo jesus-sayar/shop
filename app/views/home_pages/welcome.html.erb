@@ -1,0 +1,15 @@
+<h2>Productos en Venta</h2>
+
+<%= create_products_grid @products do |product| %>
+	<div class="product">
+		<p><strong><%= product.name %></strong></p>
+		<p><strong><%= product.description %></strong></p>
+	 	<p><%= product.price %> €</p>
+		<% if product_in_cart(product) %>
+	 		<span class="label radius white">En carro</span>
+	 	<% else %>
+			<%= link_to 'Agregar Carro', cart_items_path(:product_id => product.id), :method => :post,
+								:class => 'nice small radius white button' %>
+		<% end %>
+	</div>
+<% end %>

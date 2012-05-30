@@ -1,0 +1,9 @@
+<h1><small>Registrate</small></h1>
+<%= form_for @user, :as => :user, :url => user_registration_path, :html => { :class => "custom nice" } do |f| %>
+	<%= f.text_field :email, :placeholder => "Email", :class => "input-text" %>
+	<%= f.password_field :password, :placeholder => "Contraseña", :class => "input-text" %>
+	<%= f.password_field :password_confirmation, :placeholder => "Confirmar Contraseña", :class => "input-text" %>
+	<div class="actions">
+	  <%= f.submit 'Registrarte', :class => "nice small radius blue button" %>
+	</div>
+<% end %>

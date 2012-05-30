@@ -1,0 +1,52 @@
+<h2>Confirmación de compra</h2>
+
+<h3>Detalles del pedido</h3>
+<table>
+  <thead>
+    <tr>
+      <th>Nº</th>
+      <th>Producto</th>
+      <th>Descripción</th>
+			<th>Cantidad</th>
+      <th>Precio</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @cart.cart_items.each_with_index do |cart_item, index| %>
+      <tr>
+        <td><%= index+1 %></td>
+        <td><%= cart_item.product.name %></td>
+        <td><%= cart_item.product.description %></td>
+        <td><%= cart_item.quantity %></td>
+        <td><%= cart_item.product.price %></td>
+      </tr>
+    <% end %>
+    <tr>
+	    <tr>
+	      <td colspan="3"></td>
+	      <td class="">TOTAL:</td>
+	      <td><%= @cart.total_price %> &nbsp; €</td>
+	    </tr>
+    </tr>
+  </tbody>
+</table>
+
+<h3>Dirección de envio</h3>
+
+<%= form_tag complete_path, :class => "custom nice" do %>
+  <%= hidden_field_tag :token, params[:token] %>
+  <%= hidden_field_tag :payer_id, params[:PayerID] %>
+	<%= label_tag :firstname %>
+  <%= text_field_tag "address[firstname]", @address['name'], :class => "input-text" %>
+  <%= label_tag :lastname %>
+  <%= text_field_tag "address[lastname]", @address['name'], :class => "input-text" %>
+  <%= label_tag :address %>
+  <%= text_field_tag "address[address]", @address['address1'] , :class => "input-text" %>
+  <%= label_tag :city %>
+  <%= text_field_tag "address[city]", @address['city'], :class => "input-text" %>
+  <%= label_tag :state %>
+  <%= text_field_tag "address[state]", @address['state'], :class => "input-text" %>
+  <%= label_tag :zipcode %>
+  <%= text_field_tag "address[zipcode]", @address['zip'], :class => "input-text" %>
+  <%= submit_tag 'Completar compra', :class => "nice small radius blue button" %>
+<% end %>

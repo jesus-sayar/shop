@@ -1,0 +1,21 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Nombre:</b>
+  <%= @product.name %>
+</p>
+
+<p>
+  <b>Descripcion:</b>
+  <%= @product.description %>
+</p>
+
+<p>
+  <b>Precio:</b>
+  <%= @product.price %>
+</p>
+
+<div class="actions">
+	<%= link_to 'Editar', edit_product_path(@product), :class => "nice small radius white button" %>
+	<%= link_to 'Listado', products_path, :class => "nice small radius white button" %>
+</div>

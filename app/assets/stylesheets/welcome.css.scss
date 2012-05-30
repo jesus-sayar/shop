@@ -1,0 +1,28 @@
+.navbar {
+  width: 80%;
+  height: 23px;
+
+  ul { list-style-type: none; }
+  li {
+    float: left;
+		padding-left: 4px;
+    a {
+	 		font-weight: bold;
+	 		text-decoration: none;
+			padding: 2px;
+			background: #ffffff;
+			&:hover {
+	 			text-decoration: underline;
+			}
+		}
+  }
+}
+
+table {
+	width: 80%;
+	tr {
+		td {
+			padding: 5px;
+		}
+	}
+}

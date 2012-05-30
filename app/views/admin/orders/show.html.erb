@@ -1,0 +1,71 @@
+<h1><small>Pedido</small></h1>
+
+<h2><small>Datos del pedido</small></h2>
+<p>
+  <strong>ID de pedido:</strong>
+  <%= @order.id %>
+</p>
+
+<h2><small>Datos del usuario</small></h2>
+<p>
+  <strong>Usuario:</strong>
+  <%= @order.user.email %>
+</p>
+
+<h2><small>Dirección de envio</small></h2>
+<p>
+  <strong>Nombre:</strong>
+  <%= @order.address.firstname %>
+</p>
+<p>
+  <strong>Apellidos:</strong>
+  <%= @order.address.lastname %>
+</p>
+<p>
+  <strong>Dirección:</strong>
+  <%= @order.address.address %>
+</p>
+<p>
+  <strong>Ciudad:</strong>
+  <%= @order.address.city %>
+</p>
+<p>
+  <strong>Provincia:</strong>
+  <%= @order.address.state %>
+</p>
+<p>
+  <strong>CP:</strong>
+  <%= @order.address.zipcode %>
+</p>
+<p>
+ <strong>Telefono:</strong>
+  <%= @order.address.phone %>
+</p>
+
+<h2><small>Productos del pedido</small></h2>
+<table>
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Producto</th>
+      <th>Descripcion</th>
+      <th>Precio</th>
+    </tr>
+  </thead>
+  <tbody>
+  	<% @order.order_items.each do |order_item| %>
+    	<tr>
+      	<td><%= order_item.product.id %></td>
+        <td><%= order_item.product.name %></td>
+        <td><%= order_item.product.description %></td>
+        <td><%= order_item.product.price %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<div class="actions">
+  <%= link_to "Listado", admin_orders_path, :class => "nice small radius white button" %>
+  <%= link_to "Eliminar", [:admin, @order], :confirm => "Esta usted seguro?", :method => :delete,
+																						:class => 'nice small radius red button' %>
+</div>

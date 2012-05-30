@@ -1,0 +1,16 @@
+<h2><small>¿Olvidaste tu contraseña?</small></h2>
+
+<%= form_for(resource, :as => resource_name, 
+											 :url => password_path(resource_name), 
+											 :html => { :method => :post, :class => "custom nice" }) do |f| %>
+  
+	<%= devise_error_messages! %>
+
+	<%= f.email_field :email, :placeholder => "Email", :class => "input-text" %>
+
+	<div class="actions">
+	  <%= f.submit 'Solicitar nueva contraseña', :class => "nice small radius blue button" %>
+	</div>
+<% end %>
+
+<%= render :partial => "devise/shared/links" %>

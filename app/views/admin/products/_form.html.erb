@@ -1,0 +1,17 @@
+<%= form_for [:admin, @product], :html => { :class => "custom nice" } do |f| %>
+    
+	<%= f.label :name %>
+  <%= f.text_field :name, :class => "input-text" %>
+    
+	<%= f.label :description %>
+  <%= f.text_field :description, :class => "input-text" %>
+    
+	<%= f.label :price %>
+  <%= f.text_field :price, :class => "input-text" %>
+
+	<div class="actions">
+	  <%= f.submit :class => "nice small radius blue button" %>
+	  <%= link_to "Cancelar", admin_products_path, :class => "nice small radius white button" %>
+	</div>
+<% end %>
+

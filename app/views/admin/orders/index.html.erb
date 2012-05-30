@@ -1,0 +1,24 @@
+<h2>Listado de Pedidos</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Email</th>
+      <th>Acciones</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @orders.each do |order| %>
+      <tr>
+        <td><%= order.id %></td>
+        <td><%= order.user.email %></td>
+        <td>
+          <%= link_to "Ver", [:admin, order], :class => "nice small radius white button" %>
+          <%= link_to "Eliminar", [:admin, order], :confirm => "Esta usted seguro?",
+                                           :method => :delete, :class => 'nice small radius red button' %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

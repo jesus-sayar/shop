@@ -1,0 +1,18 @@
+<h2><small>Login</small></h2>
+
+<%= form_for(resource, :as => resource_name,
+ 											 :url => session_path(resource_name), 
+											 :html => { :class => "custom nice" }) do |f| %>
+
+	<%= f.text_field :email, :placeholder => "Email", :class => "input-text" %>
+	<%= f.password_field :password, :placeholder => "Password", :class => "input-text" %>
+	<%= f.check_box :remember_me %>
+	<%= f.label :remember_me, "Recuerda mis datos", :class => "inline" %>
+	
+	<div class="actions">
+  	<%= f.submit 'Login', :class => "nice small radius blue button" %>
+	</div>
+	
+<% end %>
+	
+<%= render :partial => "devise/shared/links" %>

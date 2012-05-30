@@ -1,0 +1,46 @@
+<h2>Carro de compra</h2>
+
+<% unless @cart.empty? %>
+	<table id="shop_cart_table">
+	  <thead>
+	    <tr>
+	      <th>Nº</th>
+	      <th>Producto</th>
+	      <th>Descripcion</th>
+				<th>Cantidad</th>
+	      <th>Precio</th>
+	      <th>Eliminar</th>
+	    </tr>
+	  </thead>
+	  <tbody>
+	    <% @cart.cart_items.each_with_index do |cart_item, index| %>
+	      <tr>
+	        <td><%= index+1 %></td>
+	        <td><%= cart_item.product.name %></td>
+	        <td><%= cart_item.product.description %></td>
+		      <td><%= cart_item.quantity %></td>
+	        <td><%= cart_item.product.price %></td>
+	        <td>
+						<%= link_to "Eliminar", cart_item_path(:id => cart_item), :method => :delete, 
+												:class => 'nice small radius red button' %>
+					</td>
+	      </tr>
+	    <% end %>
+	    <tr>
+	      <td colspan="4"></td>
+	      <td class="">TOTAL:</td>
+	      <td><%= @cart.total_price %> &nbsp; €</td>
+	    </tr>
+	  </tbody>
+	</table>
+<% else %>
+	Todavía no han sido añadidos productos al carro.
+<% end %>
+
+<div>
+  <div>
+    <%= link_to "SEGUIR COMPRANDO", root_path, :class => "nice small radius white button" %>
+		<%= link_to "REALIZAR COMPRA", checkout_path, :class => "nice small radius white button" %>
+    <%#= link_to "REALIZAR COMPRA", preview_order_path(@cart.id), :class => "nice small radius blue button" unless @cart.empty? %>
+  </div>
+</div>

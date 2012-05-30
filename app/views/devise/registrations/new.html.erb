@@ -1,0 +1,19 @@
+<h2><small>Registrate</small></h2>
+
+<%= form_for(resource, :as => resource_name, 
+											 :url => registration_path(resource_name), 
+											 :html => { :class => "custom nice" }) do |f| %>
+											
+  <%= devise_error_messages! %>
+
+  <%= f.email_field :email, :placeholder => "Email", :class => "input-text" %>
+  <%= f.password_field :password, :placeholder => "Contraseña", :class => "input-text" %>
+  <%= f.password_field :password_confirmation, :placeholder => "Confirmar Contraseña", :class => "input-text" %>
+
+	<div class="actions">
+	  <%= f.submit 'Registrarte', :class => "nice small radius blue button" %>
+	</div>
+	
+<% end %>
+
+<%= render :partial => "devise/shared/links" %>

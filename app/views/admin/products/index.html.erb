@@ -1,0 +1,32 @@
+<h2>Listado de Productos</h2>
+<table>
+	<thead>
+	  <tr>
+			<th>ID</th>
+	    <th>Nombre</th>
+	    <th>Descripcion</th>
+	    <th>Precio</th>
+	    <th></th>
+	  </tr>
+	</thead>
+	<tbody>
+		<% @products.each do |product| %>
+		  <tr>
+				<td><%= product.id %></td>
+		    <td><%= product.name %></td>
+		    <td><%= product.description %></td>
+		    <td><%= product.price %></td>
+		    <td>
+					<%= link_to 'Ver', [:admin, product], :class => "nice small radius white button" %>
+		    	<%= link_to 'Editar', edit_admin_product_path(product), :class => "nice small radius white button" %>
+		    	<%= link_to 'Eliminar', [:admin, product], :confirm => 'Esta usted seguro?', :method => :delete, 
+																										 :class => 'nice small radius red button' %>
+				</td>
+		  </tr>
+		<% end %>
+	</tbody>
+</table>
+
+<br />
+
+<%= link_to 'Nuevo Producto', new_admin_product_path, :class => "nice small radius blue button" %>
